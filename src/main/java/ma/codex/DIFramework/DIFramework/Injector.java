@@ -30,17 +30,28 @@ public class Injector {
      * Key: Fully qualified class name
      * Value: Instance of the component
      */
-    public void scanClasses() {
+    public void startApplication(Class<?> mainClass) {
+        String packageName = mainClass.getPackage().getName().replace(".", "/");
+
         try {
             ScanByAnnotation scanner = new ScanByAnnotation(Component.class);
-            Collection<Class<?>> result = scanner.find("ma/codex/DIFramework");
+            Collection<Class<?>> result = scanner.find(packageName);
 
             result.forEach(this::instantiate);
-            System.out.println(components.toString());
         } catch (RuntimeException e) {
             System.err.println("Error during class scanning and component creation.");
             e.printStackTrace();
         }
+    }
+
+    /**
+     * a getter to retrieve a component from the DI Context
+     *
+     * @param componentClass The class to inject dependencies for
+     * @return an instance of the specified class
+     */
+    public Object getComponent(Class<?> componentClass) {
+        return components.get(componentClass.getName());
     }
 
     /**

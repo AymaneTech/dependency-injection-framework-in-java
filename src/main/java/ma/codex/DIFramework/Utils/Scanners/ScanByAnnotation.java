@@ -25,6 +25,8 @@ public class ScanByAnnotation {
         )
         ) {
             return result.getClasses();
+        } catch (RuntimeException e) {
+            throw new RuntimeException("Error while scanning for annotation " + annotation, e);
         }
     }
 
