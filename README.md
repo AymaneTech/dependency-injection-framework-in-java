@@ -41,4 +41,5 @@ Instructions for handling exceptions in the application.
 - Ensure all tests pass before submitting a pull request
 - Follow the project's coding standards and guidelines
 
+# Project acrchitecture
 ![Framework Architecture](./assets/architecture.png)
