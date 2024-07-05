@@ -38,7 +38,7 @@ public class Injector {
      * Key: Fully qualified class name
      * Value: Instance of the component
      */
-    public void startApplication(Class<?> mainClass) {
+    public void scanClasses(Class<?> mainClass) {
         String packageName = mainClass.getPackage().getName().replace(".", "/");
 
         try {
