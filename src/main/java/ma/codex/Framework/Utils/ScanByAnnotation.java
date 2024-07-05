@@ -1,4 +1,4 @@
-package ma.codex.Framework.Utils.Scanners;
+package ma.codex.Framework.Utils;
 
 import org.burningwave.core.assembler.ComponentContainer;
 import org.burningwave.core.classes.ClassCriteria;

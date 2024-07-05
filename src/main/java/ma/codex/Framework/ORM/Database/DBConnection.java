@@ -1,6 +1,8 @@
 package ma.codex.Framework.ORM.Database;
 
 
+import ma.codex.Framework.Utils.env;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -35,9 +37,9 @@ public class DBConnection {
     }
 
     private void init() throws SQLException {
-        String url = "jdbc:postgresql://localhost:5432/middle_night";
-        String username = "postgres";
-        String password = "admin";
+        String url = env.get("DB_URL");
+        String username = env.get("DB_USERNAME");
+        String password = env.get("DB_PASSWORD");
         try {
             connection = DriverManager.getConnection(url, username, password);
         } catch (SQLException e) {

@@ -3,7 +3,7 @@ package ma.codex.Framework.DIContext;
 import ma.codex.Framework.DIContext.Annotations.Autowired;
 import ma.codex.Framework.DIContext.Annotations.Component;
 import ma.codex.Framework.DIContext.Annotations.Qualified;
-import ma.codex.Framework.Utils.Scanners.ScanByAnnotation;
+import ma.codex.Framework.Utils.ScanByAnnotation;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
