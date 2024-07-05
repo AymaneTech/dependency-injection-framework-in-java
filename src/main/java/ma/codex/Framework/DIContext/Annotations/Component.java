@@ -1,4 +1,4 @@
-package ma.codex.DIFramework.Annotations;
+package ma.codex.Framework.DIContext.Annotations;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

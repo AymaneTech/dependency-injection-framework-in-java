@@ -7,11 +7,24 @@
     <name>Archetype - codex-DI-framework</name>
     <url>http://maven.apache.org</url>
 
+
     <dependencies>
         <dependency>
             <groupId>org.burningwave</groupId>
             <artifactId>core</artifactId>
             <version>12.65.1</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>1.7.30</version>
+        </dependency>
+
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+            <version>1.5.6</version>
         </dependency>
     </dependencies>
 </project>
