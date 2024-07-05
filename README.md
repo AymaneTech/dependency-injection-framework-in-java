@@ -1,39 +1,44 @@
-# Lightweight Dependency Injection Framework
-
-A minimalist yet powerful dependency injection framework for Java, developed by Aymane El Maini and Soufiane Bouanani.
-
-## Overview
-
-This project leverages Java Reflection to provide seamless dependency injection along with additional features, offering a flexible and efficient solution for managing object dependencies in Java applications.
+# Codex DI Framework
+## Brief Description
+A lightweight Java framework designed to provide a simple and efficient way to build Java applications.
 
 ## Key Features
+- Lightweight and fast
+- Easy to integrate with other libraries
+## Modules Overview
+### Dependency Injection Module
+Brief description of the Dependency Injection Module.
 
-- Lightweight design for minimal overhead
-- Utilizes Java Reflection for dynamic dependency resolution
-- Easy-to-use API for integrating into existing projects
-- Additional features to enhance dependency management (specifics to be added)
+### ORM Module
+Brief description of the ORM Module.
 
 ## Getting Started
+### Prerequisites
+- Java Development Kit (JDK) 8 or higher
+- Maven or Gradle
+- A modern IDE like IntelliJ IDEA or Eclipse
+- A relational database like MySQL or PostgreSQL
+### Installation
+1. Clone the repository from GitHub
+2. Run the Maven or Gradle build command
+3. Configure the application properties file
+## Basic Usage Examples
+### Setting up a Simple Project
+Instructions for setting up a simple project.
 
-(Add installation and basic usage instructions here)
+### Configuring Dependency Injection
+Instructions for configuring dependency injection.
 
-## Documentation
+### Using the ORM Module
+Instructions for using the ORM module to interact with a database.
 
-(Add link to or information about detailed documentation)
+### Handling Exceptions
+Instructions for handling exceptions in the application.
 
 ## Contributing
+- Fork the repository and create a new branch
+- Write clear and concise commit messages
+- Ensure all tests pass before submitting a pull request
+- Follow the project's coding standards and guidelines
 
-We welcome contributions! Please see our [Contributing Guidelines](CONTRIBUTING.md) for more details.
-
-## License
-
-(Add license information here)
-
-## Authors
-
-- Aymane El Maini
-- Soufiane Bouanani
-
-## Acknowledgments
-
-(Add any acknowledgments or credits here)
+![Framework Architecture](./assets/architecture.png)
