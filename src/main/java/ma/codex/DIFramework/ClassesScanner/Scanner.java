@@ -1,24 +1,33 @@
 package ma.codex.DIFramework.ClassesScanner;
 
+import ma.codex.DIFramework.Annotations.Component;
+import ma.codex.DIFramework.Annotations.Inject;
 import org.burningwave.core.assembler.ComponentContainer;
 import org.burningwave.core.assembler.ComponentSupplier;
-import org.burningwave.core.classes.*;
+import org.burningwave.core.classes.ClassCriteria;
+import org.burningwave.core.classes.ClassHunter;
+import org.burningwave.core.classes.SearchConfig;
 
-import java.util.Set;
+import java.util.Collection;
 
 public class Scanner {
 
-    public Set<Class<?>> getPackageClasses(String packageName) {
+    public Collection<Class<?>> find(String packageName) {
         ComponentSupplier componentSupplier = ComponentContainer.getInstance();
         ClassHunter classHunter = componentSupplier.getClassHunter();
 
-        SearchConfig searchConfig = SearchConfig.forResources(packageName)
-                .by(ClassCriteria.create().allThoseThatHaveAMatchInHierarchy(cls -> cls.getAnnotations().length > 0));
-
-        try (SearchResult result = classHunter.findBy(searchConfig)) {
-            CriteriaWithClassElementsSupplyingSupport criteria = ClassCriteria.create();
-            System.out.println(result.getClasses(criteria));
-            return null;
+        try (ClassHunter.SearchResult result = classHunter.findBy(
+                SearchConfig.forResources(
+                        packageName
+                ).by(
+                        ClassCriteria.create().allThoseThatMatch((cls) -> {
+                            return !cls.isAnnotation() && cls.isAnnotationPresent(Component.class);
+                        })
+                )
+        )
+        ) {
+            return result.getClasses();
         }
     }
+
 }
