@@ -4,15 +4,17 @@ import ma.codex.Framework.ORM.Annotations.Column;
 import ma.codex.Framework.ORM.Annotations.Entity;
 import ma.codex.Framework.ORM.Annotations.ID;
 
-@Entity(name = "entities")
-public class Entity1 {
+import javax.management.NotificationEmitter;
+
+@Entity(name = "entities3")
+public class Entity3 {
     @ID
     @Column(name = "id")
     private Integer id;
 
-    @Column(name = "name", size = 50)
-    private String name;
+    @Column(name = "username", size = 50)
+    private String username;
 
-    @Column(name = "description", type = "text")
-    private String description;
+    @Column(name = "email", size = 50)
+    private String email;
 }

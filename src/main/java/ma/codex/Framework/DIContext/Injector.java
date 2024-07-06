@@ -151,7 +151,6 @@ public class Injector {
     private void instantiate(Class<?> clazz) {
         if (!components.containsKey(clazz.getName()))
             inject(clazz);
-
     }
 
     /**
