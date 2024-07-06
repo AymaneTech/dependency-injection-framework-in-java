@@ -1,8 +1,8 @@
 package ma.codex.Framework.ORM.TablesCreation;
 
-import ma.codex.Framework.ORM.Annotations.Column;
-import ma.codex.Framework.ORM.Annotations.Entity;
-import ma.codex.Framework.ORM.Annotations.ID;
+import ma.codex.Framework.ORM.Persistence.Annotations.Column;
+import ma.codex.Framework.ORM.Persistence.Annotations.Entity;
+import ma.codex.Framework.ORM.Persistence.Annotations.ID;
 import ma.codex.Framework.Utils.ScanByAnnotation;
 
 import java.lang.reflect.Field;

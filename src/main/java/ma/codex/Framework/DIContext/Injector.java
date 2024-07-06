@@ -14,7 +14,8 @@ import java.util.HashMap;
 
 /**
  * Injector class for Dependency Injection framework.
- * This class is responsible for scanning, instantiating, and injecting dependencies
+ * This class is responsible for scanning, instantiating, and injecting
+ * dependencies
  * for classes annotated with @Component.
  */
 public class Injector {
@@ -28,9 +29,11 @@ public class Injector {
 
     /*
      * Map to store interfaces with their implementations
+     * 
      * @key: interface name
+     * 
      * @value: implementation of this interface
-     * */
+     */
     private HashMap<String, Object> interfaces = new HashMap<>();
 
     /**
@@ -128,7 +131,8 @@ public class Injector {
     }
 
     /**
-     * Creates an instance using the default constructor and injects field dependencies.
+     * Creates an instance using the default constructor and injects field
+     * dependencies.
      *
      * @param declaringClass The class to create an instance of
      */
@@ -137,8 +141,8 @@ public class Injector {
             Object instance = declaringClass.getDeclaredConstructor().newInstance();
             components.put(declaringClass.getName(), instance);
             injectFields(instance);
-        } catch (InstantiationException | IllegalAccessException | InvocationTargetException |
-                 NoSuchMethodException e) {
+        } catch (InstantiationException | IllegalAccessException | InvocationTargetException
+                | NoSuchMethodException e) {
             throw new RuntimeException("Error creating instance for " + declaringClass.getName(), e);
         }
     }
@@ -154,7 +158,8 @@ public class Injector {
     }
 
     /**
-     * Retrieves an existing instance of a class or creates a new one if it doesn't exist.
+     * Retrieves an existing instance of a class or creates a new one if it doesn't
+     * exist.
      *
      * @param clazz The class to get or create an instance of
      * @return An instance of the specified class
@@ -192,6 +197,5 @@ public class Injector {
     private boolean isInterface(Parameter param) {
         return param.getType().isInterface() && param.isAnnotationPresent(Qualified.class);
     }
-
 
 }
