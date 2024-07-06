@@ -19,10 +19,16 @@ public class TableCreator {
 
     public void createTables() throws SQLException {
         List<String> schemas = generator.generateTableCreationQueries(Application.class);
-        System.out.println(schemas.toString());
-        for (String schema : schemas) {
-            PreparedStatement stmt = connection.prepareStatement(schema);
-            stmt.executeUpdate();
+        System.out.println(schemas);
+        try {
+            for (String schema : schemas) {
+                PreparedStatement stmt = connection.prepareStatement(schema);
+                stmt.executeUpdate();
+            }
+        } catch (SQLException e) {
+            System.err.println("error while creating tables");
+            System.err.println(e.getMessage());
+            e.printStackTrace();
         }
 
     }
