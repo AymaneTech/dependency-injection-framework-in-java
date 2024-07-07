@@ -1,7 +1,9 @@
 package ma.codex.Framework.ORM.Schema;
 
+import ma.codex.Framework.ORM.Schema.Column.Factory.ColumnHandlerFactory;
 import ma.codex.Framework.Persistence.Annotations.Entity;
 
+import java.lang.reflect.Field;
 import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -15,20 +17,13 @@ public class SchemaGenerator {
         return schemas;
     }
 
-    public void generateSchema(Collection<Class<?>> entityClasses) {
+    public void setSchemas(Collection<Class<?>> entityClasses) {
         schemas = entityClasses.stream()
-                .map(this::generateTableCreationQuery)
+                .map(this::generateSchema)
                 .collect(Collectors.toList());
     }
 
-    private String getColumnDefinitions(Class<?> entityClass) {
-        return Stream.of(entityClass.getDeclaredFields())
-                .map(this::getColumnDefinition)
-                .filter(def -> !def.isEmpty())
-                .collect(Collectors.joining(",\n"));
-    }
-
-    private String generateTableCreationQuery(Class<?> entityClass) {
+    private String generateSchema(Class<?> entityClass) {
         String tableName = entityClass.getAnnotation(Entity.class).name();
         String columnDefinitions = getColumnDefinitions(entityClass);
 
@@ -58,5 +53,14 @@ public class SchemaGenerator {
                 END;
                 $$ LANGUAGE plpgsql;
                 """, tableName, columnDefinitions, tableName.toLowerCase(), tableName.toLowerCase(), tableName);
+    }
+
+    private String getColumnDefinitions(Class<?> entityClass) {
+        return Stream.of(entityClass.getDeclaredFields())
+                .map((Field field) -> {
+                    return ColumnHandlerFactory.get(field).handle(field);
+                })
+                .filter(def -> !def.isEmpty())
+                .collect(Collectors.joining(",\n"));
     }
 }

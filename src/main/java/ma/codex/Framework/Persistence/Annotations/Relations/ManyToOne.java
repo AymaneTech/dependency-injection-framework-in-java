@@ -10,9 +10,5 @@ import java.lang.annotation.Target;
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.FIELD)
 public @interface ManyToOne {
-    String name();
-
     String mappedBy();
-
-    CascadeType cascade() default CascadeType.NONE;
 }

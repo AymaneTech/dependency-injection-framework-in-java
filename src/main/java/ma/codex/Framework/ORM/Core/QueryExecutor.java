@@ -15,15 +15,16 @@ public class QueryExecutor {
     public void execute(List<String> schemas) throws SQLException {
         try {
             for (String schema : schemas) {
-                try (PreparedStatement stmt = connection.prepareStatement(schema)) {
-                    stmt.executeUpdate();
+                if (!schema.isEmpty()) {
+                    try (PreparedStatement stmt = connection.prepareStatement(schema)) {
+                        stmt.executeUpdate();
+                    }
                 }
             }
         } catch (SQLException e) {
-            System.err.println("error while creating tables");
+            System.err.println("error in statement execution");
             System.err.println(e.getMessage());
-            e.printStackTrace();
+//            e.printStackTrace();
         }
-
     }
 }
