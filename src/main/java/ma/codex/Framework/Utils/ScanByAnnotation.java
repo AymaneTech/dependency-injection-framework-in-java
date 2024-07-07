@@ -11,7 +11,13 @@ import java.util.Collection;
 public class ScanByAnnotation {
     private Class<? extends Annotation> annotation;
 
+    public ScanByAnnotation() {
+    }
     public ScanByAnnotation(Class<? extends Annotation> annotation) {
+        this.annotation = annotation;
+    }
+
+    public void setAnnotation(Class<? extends Annotation> annotation) {
         this.annotation = annotation;
     }
 

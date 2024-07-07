@@ -7,7 +7,6 @@ import ma.codex.Framework.ORM.Persistence.Annotations.Relations.ManyToMany;
 import ma.codex.Framework.ORM.Persistence.Annotations.Relations.ManyToOne;
 import ma.codex.Framework.ORM.Persistence.Annotations.Relations.OneToMany;
 import ma.codex.Framework.ORM.Persistence.Annotations.Relations.OneToOne;
-import ma.codex.Framework.Utils.ScanByAnnotation;
 
 import java.lang.reflect.Field;
 import java.util.Collection;
@@ -23,11 +22,7 @@ public class SchemaGenerator {
         return schemas;
     }
 
-    public void generateSchema(Class<?> mainClass) {
-        String packageName = mainClass.getPackage().getName().replace(".", "/");
-        ScanByAnnotation scanner = new ScanByAnnotation(Entity.class);
-        Collection<Class<?>> entityClasses = scanner.find(packageName);
-
+    public void generateSchema(Collection<Class<?>> entityClasses) {
         schemas = entityClasses.stream()
                 .map(this::generateTableCreationQuery)
                 .collect(Collectors.toList());
@@ -47,7 +42,7 @@ public class SchemaGenerator {
             Column column = field.getAnnotation(Column.class);
             String type = determineColumnType(field, column);
             String isNull = column.nullable() ? "" : "NOT NULL";
-            return String.format("    %s %s %s", field.getName(), type, isNull);
+            return String.format("    %s %s %s", column.name(), type, isNull);
         }
         return "";
     }
