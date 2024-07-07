@@ -2,6 +2,7 @@ package ma.codex.Framework.ORM.Schema.Constraint;
 
 import ma.codex.Framework.ORM.Schema.Constraint.Factory.ForeignKeyHandlerFactory;
 import ma.codex.Framework.Persistence.Annotations.Relations.Definition;
+import ma.codex.Framework.Persistence.Annotations.Relations.JoiningTable;
 
 import java.lang.reflect.Field;
 import java.util.Collection;
@@ -16,25 +17,31 @@ public class ConstraintManager {
         return constraints;
     }
 
-    public void setConstraints(Collection<Class<?>> entityClasses) {
+    public void setConstraints(final Collection<Class<?>> entityClasses) {
         constraints = entityClasses.stream()
                 .map(this::checkFields)
                 .collect(Collectors.toList());
     }
 
-    private String checkFields(Class<?> entityClass) {
+    private String checkFields(final Class<?> entityClass) {
         return Stream.of(entityClass.getDeclaredFields())
                 .map(this::addConstraint)
                 .filter(def -> !def.isEmpty())
                 .collect(Collectors.joining(",\n"));
     }
 
-    private String addConstraint(Field field) {
-        if (!field.isAnnotationPresent(Definition.class))
+    private String addConstraint(final Field field) {
+        if (field.isAnnotationPresent(Definition.class)) {
+            System.out.println("definition");
+            return ForeignKeyHandlerFactory.get(field)
+                    .handle(field.getAnnotation(Definition.class));
+        } else if (field.isAnnotationPresent(JoiningTable.class)) {
+            System.out.println("joining table");
+            return ForeignKeyHandlerFactory.get(field)
+                    .handle(field.getAnnotation(JoiningTable.class));
+        } else {
             return "";
-        return ForeignKeyHandlerFactory.get(field)
-                .handle(field.getAnnotation(Definition.class));
+        }
+
     }
-
-
 }

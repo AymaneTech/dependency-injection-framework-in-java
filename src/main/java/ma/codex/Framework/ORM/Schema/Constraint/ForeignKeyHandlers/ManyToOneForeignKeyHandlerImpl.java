@@ -3,7 +3,7 @@ package ma.codex.Framework.ORM.Schema.Constraint.ForeignKeyHandlers;
 import ma.codex.Framework.Persistence.Annotations.Relations.Definition;
 import ma.codex.Framework.Persistence.Enums.CascadeType;
 
-public final class ManyToOneForeignKeyHandlerImpl implements ForeignKeyHandler {
+public final class ManyToOneForeignKeyHandlerImpl implements ForeignKeyHandler <Definition>{
     @Override
     public String handle(Definition definition) {
         String format = String.format("ALTER TABLE %s ADD CONSTRAINT fk_%s_%s FOREIGN KEY (%s) REFERENCES %s(%s)",

@@ -13,18 +13,19 @@ public class QueryExecutor {
     }
 
     public void execute(List<String> schemas) throws SQLException {
-        try {
-            for (String schema : schemas) {
-                if (!schema.isEmpty()) {
-                    try (PreparedStatement stmt = connection.prepareStatement(schema)) {
-                        stmt.executeUpdate();
+        for (String schema : schemas) {
+            if (!schema.isEmpty()) {
+                try (PreparedStatement stmt = connection.prepareStatement(schema)) {
+                    stmt.executeUpdate();
+                } catch (SQLException e) {
+                    if (e.getMessage().contains("already exists")) {
+                        continue;
                     }
+                    System.err.println("error in statement execution");
+                    System.err.println(e.getMessage());
+                    System.err.println("schema: " + schema);
                 }
             }
-        } catch (SQLException e) {
-            System.err.println("error in statement execution");
-            System.err.println(e.getMessage());
-//            e.printStackTrace();
         }
     }
 }

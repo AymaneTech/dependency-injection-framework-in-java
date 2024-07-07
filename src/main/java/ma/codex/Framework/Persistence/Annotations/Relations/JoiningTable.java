@@ -5,7 +5,13 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
-@Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.FIELD)
-public @interface ManyToMany {
+@Retention(RetentionPolicy.RUNTIME)
+public @interface JoiningTable {
+    String name();
+
+    String table1();
+    String column1();
+    String table2();
+    String column2();
 }
