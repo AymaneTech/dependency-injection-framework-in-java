@@ -20,34 +20,38 @@ import java.util.HashMap;
  */
 public class Injector {
 
+    private final ScanByAnnotation scanner;
     /**
      * Map to store all instantiated components.
      * Key: Fully qualified class name
      * Value: Instance of the component
      */
-    private HashMap<String, Object> components = new HashMap<>();
+    private final HashMap<String, Object> components = new HashMap<>();
 
-    /*
+    /**
      * Map to store interfaces with their implementations
-     * 
+     *
      * @key: interface name
-     * 
      * @value: implementation of this interface
      */
-    private HashMap<String, Object> interfaces = new HashMap<>();
+    private final HashMap<String, Object> interfaces = new HashMap<>();
+
+    private final String packageName;
+
+    public Injector(ScanByAnnotation scanner, Class<?> mainClass) {
+        this.scanner = scanner;
+        scanner.setAnnotation(Component.class);
+        packageName = setPackageName(mainClass);
+    }
 
     /**
      * Map to store all instantiated components.
      * Key: Fully qualified class name
      * Value: Instance of the component
      */
-    public void scanClasses(Class<?> mainClass) {
-        String packageName = mainClass.getPackage().getName().replace(".", "/");
-
+    public void run() {
         try {
-            ScanByAnnotation scanner = new ScanByAnnotation(Component.class);
             Collection<Class<?>> result = scanner.find(packageName);
-
             result.forEach(this::instantiate);
         } catch (RuntimeException e) {
             System.err.println("Error during class scanning and component creation.");
@@ -61,8 +65,8 @@ public class Injector {
      * @param componentClass The class to inject dependencies for
      * @return an instance of the specified class
      */
-    public Object getComponent(Class<?> componentClass) {
-        return components.get(componentClass.getName());
+    public <T> T getComponent(Class<?> componentClass) {
+        return (T) components.get(componentClass.getName());
     }
 
     /**
@@ -142,7 +146,7 @@ public class Injector {
             components.put(declaringClass.getName(), instance);
             injectFields(instance);
         } catch (InstantiationException | IllegalAccessException | InvocationTargetException
-                | NoSuchMethodException e) {
+                 | NoSuchMethodException e) {
             throw new RuntimeException("Error creating instance for " + declaringClass.getName(), e);
         }
     }
@@ -198,4 +202,7 @@ public class Injector {
         return param.getType().isInterface() && param.isAnnotationPresent(Qualified.class);
     }
 
+    private String setPackageName(Class<?> mainClass) {
+        return mainClass.getPackageName().replace(".", "/");
+    }
 }

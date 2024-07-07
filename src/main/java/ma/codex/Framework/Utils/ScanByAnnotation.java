@@ -13,6 +13,7 @@ public class ScanByAnnotation {
 
     public ScanByAnnotation() {
     }
+
     public ScanByAnnotation(Class<? extends Annotation> annotation) {
         this.annotation = annotation;
     }
