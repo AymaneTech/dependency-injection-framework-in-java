@@ -7,7 +7,7 @@ import ma.codex.Framework.ORM.Persistence.Annotations.Relations.OneToMany;
 
 import java.util.List;
 
-@Entity
+@Entity(name = "categories")
 public class Category {
 
     @ID

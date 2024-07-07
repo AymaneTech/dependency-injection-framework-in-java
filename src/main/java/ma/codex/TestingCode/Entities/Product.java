@@ -6,7 +6,7 @@ import ma.codex.Framework.ORM.Persistence.Annotations.ID;
 import ma.codex.Framework.ORM.Persistence.Annotations.Relations.ManyToOne;
 import ma.codex.Framework.ORM.Persistence.Enums.CascadeType;
 
-@Entity
+@Entity(name = "products")
 public class Product {
 
     @ID
@@ -18,7 +18,7 @@ public class Product {
     @Column(name = "description", type = "text")
     private String description;
 
-    @ManyToOne(mappedBy = "categories", name = "category_id", cascade = CascadeType.ALL)
+    @ManyToOne(mappedBy = "categories", name = "id", cascade = CascadeType.ALL)
     @Column(name = "category_id")
     private Long categoryId;
 }
