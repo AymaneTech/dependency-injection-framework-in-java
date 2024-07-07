@@ -1,8 +1,5 @@
-package ma.codex.Framework.ORM.Schema.Column.ColumnHandlers;
+package ma.codex.Framework.ORM.Schema.Tables.ColumnHandlers;
 
-import ma.codex.Framework.Persistence.Annotations.Column;
-
-import java.io.FileDescriptor;
 import java.lang.reflect.Field;
 
 public sealed interface ColumnHandler permits ColumnHandlerImpl, PrimaryKeyHandlerImpl{

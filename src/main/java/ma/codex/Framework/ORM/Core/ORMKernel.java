@@ -1,8 +1,8 @@
 package ma.codex.Framework.ORM.Core;
 
 import ma.codex.Application;
-import ma.codex.Framework.ORM.Schema.Constraint.ConstraintManager;
-import ma.codex.Framework.ORM.Schema.SchemaGenerator;
+import ma.codex.Framework.ORM.Schema.Constraints.ConstraintManager;
+import ma.codex.Framework.ORM.Schema.Tables.SchemaGenerator;
 import ma.codex.Framework.Persistence.Annotations.Entity;
 import ma.codex.Framework.Utils.ScanByAnnotation;
 
@@ -40,9 +40,8 @@ public class ORMKernel {
             queryExecutor.execute(constraintManagement.getConstraints());
 
         } catch (Exception e) {
-            System.err.println("error occurred in the kernel");
+            System.err.println("error occurred in the ORM kernel");
             System.err.println(e.getMessage());
-            e.printStackTrace();
         }
     }
 

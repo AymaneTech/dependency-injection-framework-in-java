@@ -1,5 +1,7 @@
 package ma.codex.Framework.ORM.Core;
 
+import org.postgresql.util.PSQLException;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
@@ -17,7 +19,7 @@ public class QueryExecutor {
             if (!schema.isEmpty()) {
                 try (PreparedStatement stmt = connection.prepareStatement(schema)) {
                     stmt.executeUpdate();
-                } catch (SQLException e) {
+                } catch (PSQLException e) {
                     if (e.getMessage().contains("already exists")) {
                         continue;
                     }

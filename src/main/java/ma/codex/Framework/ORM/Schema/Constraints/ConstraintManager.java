@@ -1,6 +1,6 @@
-package ma.codex.Framework.ORM.Schema.Constraint;
+package ma.codex.Framework.ORM.Schema.Constraints;
 
-import ma.codex.Framework.ORM.Schema.Constraint.Factory.ForeignKeyHandlerFactory;
+import ma.codex.Framework.ORM.Schema.Constraints.Factory.ForeignKeyHandlerFactory;
 import ma.codex.Framework.Persistence.Annotations.Relations.Definition;
 import ma.codex.Framework.Persistence.Annotations.Relations.JoiningTable;
 
@@ -31,17 +31,16 @@ public class ConstraintManager {
     }
 
     private String addConstraint(final Field field) {
+        String query;
         if (field.isAnnotationPresent(Definition.class)) {
-            System.out.println("definition");
-            return ForeignKeyHandlerFactory.get(field)
+            query = ForeignKeyHandlerFactory.get(field)
                     .handle(field.getAnnotation(Definition.class));
         } else if (field.isAnnotationPresent(JoiningTable.class)) {
-            System.out.println("joining table");
-            return ForeignKeyHandlerFactory.get(field)
+            query = ForeignKeyHandlerFactory.get(field)
                     .handle(field.getAnnotation(JoiningTable.class));
         } else {
-            return "";
+            query = "";
         }
-
+        return query;
     }
 }

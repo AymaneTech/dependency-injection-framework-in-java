@@ -1,8 +1,8 @@
-package ma.codex.Framework.ORM.Schema.Column.Factory;
+package ma.codex.Framework.ORM.Schema.Tables.Factory;
 
-import ma.codex.Framework.ORM.Schema.Column.ColumnHandlers.ColumnHandler;
-import ma.codex.Framework.ORM.Schema.Column.ColumnHandlers.ColumnHandlerImpl;
-import ma.codex.Framework.ORM.Schema.Column.ColumnHandlers.PrimaryKeyHandlerImpl;
+import ma.codex.Framework.ORM.Schema.Tables.ColumnHandlers.ColumnHandler;
+import ma.codex.Framework.ORM.Schema.Tables.ColumnHandlers.ColumnHandlerImpl;
+import ma.codex.Framework.ORM.Schema.Tables.ColumnHandlers.PrimaryKeyHandlerImpl;
 import ma.codex.Framework.Persistence.Annotations.ID;
 
 import java.lang.reflect.Field;

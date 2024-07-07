@@ -1,10 +1,10 @@
 package ma.codex;
 
 import ma.codex.Framework.DIContext.Injector;
-import ma.codex.Framework.ORM.Schema.Constraint.ConstraintManager;
+import ma.codex.Framework.ORM.Schema.Constraints.ConstraintManager;
 import ma.codex.Framework.ORM.Core.ORMKernel;
 import ma.codex.Framework.ORM.Core.QueryExecutor;
-import ma.codex.Framework.ORM.Schema.SchemaGenerator;
+import ma.codex.Framework.ORM.Schema.Tables.SchemaGenerator;
 import ma.codex.Framework.Utils.ScanByAnnotation;
 
 import java.sql.SQLException;

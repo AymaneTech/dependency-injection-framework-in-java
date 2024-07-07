@@ -1,4 +1,4 @@
-package ma.codex.Framework.ORM.Schema.Column.ColumnHandlers;
+package ma.codex.Framework.ORM.Schema.Tables.ColumnHandlers;
 
 import ma.codex.Framework.Persistence.Annotations.Column;
 

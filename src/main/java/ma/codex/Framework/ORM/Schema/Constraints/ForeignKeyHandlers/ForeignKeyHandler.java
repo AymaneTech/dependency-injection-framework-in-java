@@ -1,7 +1,4 @@
-package ma.codex.Framework.ORM.Schema.Constraint.ForeignKeyHandlers;
-
-import ma.codex.Framework.Persistence.Annotations.Relations.Definition;
-import ma.codex.Framework.Persistence.Annotations.Relations.JoiningTable;
+package ma.codex.Framework.ORM.Schema.Constraints.ForeignKeyHandlers;
 
 import java.lang.annotation.Annotation;
 
