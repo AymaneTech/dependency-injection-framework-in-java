@@ -1,4 +1,4 @@
-package ma.codex.Framework.ORM.Persistence.Annotations.Relations;
+package ma.codex.Framework.Persistence.Annotations.Relations;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
@@ -7,6 +7,9 @@ import java.lang.annotation.Target;
 
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.FIELD)
-public @interface ManyToMany {
-
+public @interface Definition {
+    String tableName();
+    String columnName();
+    String referencedTable();
+    String referencedColumn();
 }

@@ -1,6 +1,6 @@
-package ma.codex.Framework.ORM.Persistence.Annotations.Relations;
+package ma.codex.Framework.Persistence.Annotations.Relations;
 
-import ma.codex.Framework.ORM.Persistence.Enums.CascadeType;
+import ma.codex.Framework.Persistence.Enums.CascadeType;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

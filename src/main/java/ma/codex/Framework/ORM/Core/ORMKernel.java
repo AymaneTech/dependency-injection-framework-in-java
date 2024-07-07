@@ -1,18 +1,20 @@
-package ma.codex.Framework.ORM.TablesCreation;
+package ma.codex.Framework.ORM.Core;
 
 import ma.codex.Application;
-import ma.codex.Framework.ORM.Persistence.Annotations.Entity;
+import ma.codex.Framework.ORM.Schema.Constraint.ConstraintManager;
+import ma.codex.Framework.ORM.Schema.SchemaGenerator;
+import ma.codex.Framework.Persistence.Annotations.Entity;
 import ma.codex.Framework.Utils.ScanByAnnotation;
 
 import java.util.Collection;
 
-public class Kernel {
+public class ORMKernel {
     private final ScanByAnnotation scanByAnnotation;
     private final SchemaGenerator schemaGenerator;
-    private final ConstraintManagement constraintManagement;
+    private final ConstraintManager constraintManagement;
     private final QueryExecutor queryExecutor;
 
-    public Kernel(ScanByAnnotation scanByAnnotation, SchemaGenerator generator, ConstraintManagement constraintManagement, QueryExecutor queryExecutor) {
+    public ORMKernel(ScanByAnnotation scanByAnnotation, SchemaGenerator generator, ConstraintManager constraintManagement, QueryExecutor queryExecutor) {
         this.scanByAnnotation = scanByAnnotation;
         this.schemaGenerator = generator;
         this.constraintManagement = constraintManagement;
@@ -26,10 +28,7 @@ public class Kernel {
             Collection<Class<?>> entityClasses = scanByAnnotation.find(packageName);
 
             schemaGenerator.generateSchema(entityClasses);
-            constraintManagement.generateSchema(entityClasses);
-
-//            System.out.println(schemaGenerator.getSchemas());
-//            System.out.println(constraintManagement.getConstraints());
+            constraintManagement.setConstraints(entityClasses);
 
 
             queryExecutor.execute(schemaGenerator.getSchemas());

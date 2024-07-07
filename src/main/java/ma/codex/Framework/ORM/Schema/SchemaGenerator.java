@@ -1,12 +1,12 @@
-package ma.codex.Framework.ORM.TablesCreation;
+package ma.codex.Framework.ORM.Schema;
 
-import ma.codex.Framework.ORM.Persistence.Annotations.Column;
-import ma.codex.Framework.ORM.Persistence.Annotations.Entity;
-import ma.codex.Framework.ORM.Persistence.Annotations.ID;
-import ma.codex.Framework.ORM.Persistence.Annotations.Relations.ManyToMany;
-import ma.codex.Framework.ORM.Persistence.Annotations.Relations.ManyToOne;
-import ma.codex.Framework.ORM.Persistence.Annotations.Relations.OneToMany;
-import ma.codex.Framework.ORM.Persistence.Annotations.Relations.OneToOne;
+import ma.codex.Framework.Persistence.Annotations.Column;
+import ma.codex.Framework.Persistence.Annotations.Entity;
+import ma.codex.Framework.Persistence.Annotations.ID;
+import ma.codex.Framework.Persistence.Annotations.Relations.ManyToMany;
+import ma.codex.Framework.Persistence.Annotations.Relations.ManyToOne;
+import ma.codex.Framework.Persistence.Annotations.Relations.OneToMany;
+import ma.codex.Framework.Persistence.Annotations.Relations.OneToOne;
 
 import java.lang.reflect.Field;
 import java.util.Collection;
@@ -69,14 +69,6 @@ public class SchemaGenerator {
             default -> throw new IllegalArgumentException("Unsupported type: " + javaType.getSimpleName());
         };
     }
-
-    private boolean isHasRelation(Field field) {
-        return field.isAnnotationPresent(ManyToOne.class)
-                || field.isAnnotationPresent(OneToMany.class)
-                || field.isAnnotationPresent(OneToOne.class)
-                || field.isAnnotationPresent(ManyToMany.class);
-    }
-
 
     private String generateTableCreationQuery(Class<?> entityClass) {
         String tableName = entityClass.getAnnotation(Entity.class).name();

@@ -1,9 +1,9 @@
 package ma.codex.TestingCode.Entities;
 
-import ma.codex.Framework.ORM.Persistence.Annotations.Column;
-import ma.codex.Framework.ORM.Persistence.Annotations.Entity;
-import ma.codex.Framework.ORM.Persistence.Annotations.ID;
-import ma.codex.Framework.ORM.Persistence.Annotations.Relations.OneToMany;
+import ma.codex.Framework.Persistence.Annotations.Column;
+import ma.codex.Framework.Persistence.Annotations.Entity;
+import ma.codex.Framework.Persistence.Annotations.ID;
+import ma.codex.Framework.Persistence.Annotations.Relations.OneToMany;
 
 import java.util.List;
 

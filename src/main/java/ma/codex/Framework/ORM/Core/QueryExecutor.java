@@ -1,6 +1,4 @@
-package ma.codex.Framework.ORM.TablesCreation;
-
-import ma.codex.Framework.ORM.Database.DBConnection;
+package ma.codex.Framework.ORM.Core;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -11,7 +9,7 @@ public class QueryExecutor {
     private final Connection connection;
 
     public QueryExecutor() throws SQLException {
-        connection = DBConnection.getInstance().getConnection();
+        connection = DatabaseConnection.getInstance().getConnection();
     }
 
     public void execute(List<String> schemas) throws SQLException {

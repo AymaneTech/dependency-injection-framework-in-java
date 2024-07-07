@@ -1,10 +1,10 @@
 package ma.codex.TestingCode.Entities;
 
-import ma.codex.Framework.ORM.Persistence.Annotations.Column;
-import ma.codex.Framework.ORM.Persistence.Annotations.Entity;
-import ma.codex.Framework.ORM.Persistence.Annotations.ID;
-import ma.codex.Framework.ORM.Persistence.Annotations.Relations.ManyToOne;
-import ma.codex.Framework.ORM.Persistence.Enums.CascadeType;
+import ma.codex.Framework.Persistence.Annotations.Column;
+import ma.codex.Framework.Persistence.Annotations.Entity;
+import ma.codex.Framework.Persistence.Annotations.ID;
+import ma.codex.Framework.Persistence.Annotations.Relations.ManyToOne;
+import ma.codex.Framework.Persistence.Enums.CascadeType;
 
 @Entity(name = "products")
 public class Product {

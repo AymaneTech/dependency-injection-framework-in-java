@@ -1,10 +1,10 @@
 package ma.codex;
 
 import ma.codex.Framework.DIContext.Injector;
-import ma.codex.Framework.ORM.TablesCreation.ConstraintManagement;
-import ma.codex.Framework.ORM.TablesCreation.Kernel;
-import ma.codex.Framework.ORM.TablesCreation.QueryExecutor;
-import ma.codex.Framework.ORM.TablesCreation.SchemaGenerator;
+import ma.codex.Framework.ORM.Schema.Constraint.ConstraintManager;
+import ma.codex.Framework.ORM.Core.ORMKernel;
+import ma.codex.Framework.ORM.Core.QueryExecutor;
+import ma.codex.Framework.ORM.Schema.SchemaGenerator;
 import ma.codex.Framework.Utils.ScanByAnnotation;
 
 import java.sql.SQLException;
@@ -14,9 +14,9 @@ public class Application {
         Injector DIContext = new Injector();
         DIContext.scanClasses(Application.class);
 
-        Kernel kernel = new Kernel(new ScanByAnnotation()
+        ORMKernel kernel = new ORMKernel(new ScanByAnnotation()
                 , new SchemaGenerator()
-                , new ConstraintManagement()
+                , new ConstraintManager()
                 , new QueryExecutor()
         );
 

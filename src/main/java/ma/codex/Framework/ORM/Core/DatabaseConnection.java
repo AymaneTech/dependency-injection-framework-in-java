@@ -1,4 +1,4 @@
-package ma.codex.Framework.ORM.Database;
+package ma.codex.Framework.ORM.Core;
 
 
 import ma.codex.Framework.Utils.env;
@@ -7,18 +7,18 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-public class DBConnection {
+public class DatabaseConnection {
 
-    private static DBConnection instance = null;
+    private static DatabaseConnection instance = null;
     private Connection connection = null;
 
-    private DBConnection() throws SQLException {
+    private DatabaseConnection() throws SQLException {
         init();
     }
 
-    public static DBConnection getInstance() throws SQLException {
+    public static DatabaseConnection getInstance() throws SQLException {
         if (instance == null || !instance.connection.isClosed()) {
-            instance = new DBConnection();
+            instance = new DatabaseConnection();
         }
         return instance;
     }
