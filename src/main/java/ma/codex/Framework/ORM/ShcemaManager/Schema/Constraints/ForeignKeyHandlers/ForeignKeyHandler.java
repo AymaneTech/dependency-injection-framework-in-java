@@ -1,4 +1,4 @@
-package ma.codex.Framework.ORM.Schema.Constraints.ForeignKeyHandlers;
+package ma.codex.Framework.ORM.ShcemaManager.Schema.Constraints.ForeignKeyHandlers;
 
 import java.lang.annotation.Annotation;
 

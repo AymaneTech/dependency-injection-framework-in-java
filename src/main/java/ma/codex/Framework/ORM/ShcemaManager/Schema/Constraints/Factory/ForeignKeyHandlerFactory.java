@@ -1,9 +1,9 @@
-package ma.codex.Framework.ORM.Schema.Constraints.Factory;
+package ma.codex.Framework.ORM.ShcemaManager.Schema.Constraints.Factory;
 
-import ma.codex.Framework.ORM.Schema.Constraints.ForeignKeyHandlers.ForeignKeyHandler;
-import ma.codex.Framework.ORM.Schema.Constraints.ForeignKeyHandlers.ManyToManyForeignKeyHandlerImpl;
-import ma.codex.Framework.ORM.Schema.Constraints.ForeignKeyHandlers.ManyToOneForeignKeyHandlerImpl;
-import ma.codex.Framework.ORM.Schema.Constraints.ForeignKeyHandlers.OneToOneForeignKeyHandlerImpl;
+import ma.codex.Framework.ORM.ShcemaManager.Schema.Constraints.ForeignKeyHandlers.ForeignKeyHandler;
+import ma.codex.Framework.ORM.ShcemaManager.Schema.Constraints.ForeignKeyHandlers.ManyToManyForeignKeyHandlerImpl;
+import ma.codex.Framework.ORM.ShcemaManager.Schema.Constraints.ForeignKeyHandlers.ManyToOneForeignKeyHandlerImpl;
+import ma.codex.Framework.ORM.ShcemaManager.Schema.Constraints.ForeignKeyHandlers.OneToOneForeignKeyHandlerImpl;
 import ma.codex.Framework.Persistence.Annotations.Relations.JoiningTable;
 import ma.codex.Framework.Persistence.Annotations.Relations.ManyToOne;
 import ma.codex.Framework.Persistence.Annotations.Relations.OneToOne;

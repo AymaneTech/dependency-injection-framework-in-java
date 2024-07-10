@@ -1,9 +1,9 @@
-package ma.codex.Framework.ORM.Core;
+package ma.codex.Framework.ORM.ShcemaManager.Core;
 
 import ma.codex.Framework.DIContext.Annotations.Autowired;
 import ma.codex.Framework.DIContext.Annotations.Component;
-import ma.codex.Framework.ORM.Schema.Constraints.ConstraintManager;
-import ma.codex.Framework.ORM.Schema.Tables.SchemaGenerator;
+import ma.codex.Framework.ORM.ShcemaManager.Schema.Constraints.ConstraintManager;
+import ma.codex.Framework.ORM.ShcemaManager.Schema.Tables.SchemaGenerator;
 import ma.codex.Framework.Persistence.Annotations.Entity;
 import ma.codex.Framework.Utils.ScanByAnnotation;
 

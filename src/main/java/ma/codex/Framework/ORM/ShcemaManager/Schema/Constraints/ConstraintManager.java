@@ -1,6 +1,6 @@
-package ma.codex.Framework.ORM.Schema.Constraints;
+package ma.codex.Framework.ORM.ShcemaManager.Schema.Constraints;
 
-import ma.codex.Framework.ORM.Schema.Constraints.Factory.ForeignKeyHandlerFactory;
+import ma.codex.Framework.ORM.ShcemaManager.Schema.Constraints.Factory.ForeignKeyHandlerFactory;
 import ma.codex.Framework.Persistence.Annotations.Relations.Definition;
 import ma.codex.Framework.Persistence.Annotations.Relations.JoiningTable;
 

@@ -1,6 +1,6 @@
-package ma.codex.Framework.ORM.Schema.Tables;
+package ma.codex.Framework.ORM.ShcemaManager.Schema.Tables;
 
-import ma.codex.Framework.ORM.Schema.Tables.Factory.ColumnHandlerFactory;
+import ma.codex.Framework.ORM.ShcemaManager.Schema.Tables.Factory.ColumnHandlerFactory;
 import ma.codex.Framework.Persistence.Annotations.Entity;
 
 import java.lang.reflect.Field;

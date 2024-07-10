@@ -1,4 +1,4 @@
-package ma.codex.Framework.ORM.Schema.Constraints.ForeignKeyHandlers;
+package ma.codex.Framework.ORM.ShcemaManager.Schema.Constraints.ForeignKeyHandlers;
 
 import ma.codex.Framework.Persistence.Annotations.Relations.JoiningTable;
 

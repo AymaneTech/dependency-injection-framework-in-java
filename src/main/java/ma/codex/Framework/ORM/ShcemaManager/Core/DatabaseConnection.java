@@ -1,4 +1,4 @@
-package ma.codex.Framework.ORM.Core;
+package ma.codex.Framework.ORM.ShcemaManager.Core;
 
 
 import ma.codex.Framework.Utils.env;
