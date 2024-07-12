@@ -2,9 +2,7 @@ package ma.codex.Framework.ORM.ShcemaManager.Core;
 
 import org.postgresql.util.PSQLException;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.List;
 
 public class QueryExecutor {
@@ -14,6 +12,9 @@ public class QueryExecutor {
         connection = DatabaseConnection.getInstance().getConnection();
     }
 
+    /*
+    * This method used to execute a list of queries for create, alter, drop, etc.
+    * */
     public void execute(List<String> schemas) throws SQLException {
         for (String schema : schemas) {
             if (!schema.isEmpty()) {
@@ -30,4 +31,29 @@ public class QueryExecutor {
             }
         }
     }
+
+    /*
+    * I'll use this for select queries
+    * */
+    public ResultSet execute(String query) {
+        try (Statement stmt = connection.createStatement()) {
+            return stmt.executeQuery(query);
+        } catch (SQLException e) {
+            System.err.println("error in statement execution");
+            System.err.println(e.getMessage());
+            System.err.println("query: " + query);
+        }
+        return null;
+    }
+
+    /*
+    * I'll use this for update and insert queries
+    * */
+/*
+    public int execute(PreparedStatement stmt) {
+        try ()
+    }
+*/
+
+
 }
