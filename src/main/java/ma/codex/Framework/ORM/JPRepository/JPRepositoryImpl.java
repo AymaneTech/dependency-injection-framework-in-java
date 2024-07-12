@@ -1,6 +1,5 @@
 package ma.codex.Framework.ORM.JPRepository;
 
-import ma.codex.Framework.ORM.ShcemaManager.Core.DatabaseConnection;
 import ma.codex.Framework.ORM.ShcemaManager.Core.QueryExecutor;
 
 import java.lang.reflect.Field;
@@ -12,8 +11,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class JPRepositoryImpl<Entity, ID> implements JPRepository<Entity, ID> {
-    private final Class<Entity> type;
     private final QueryExecutor queryExecutor;
+    private final Class<?> clazz;
 
     /**
      * Unchecked means: the compiler tell you that you are doing something wrong, but you are sure that it is right.
@@ -22,11 +21,11 @@ public class JPRepositoryImpl<Entity, ID> implements JPRepository<Entity, ID> {
     @SuppressWarnings("unchecked")
     public JPRepositoryImpl(QueryExecutor queryExecutor) throws SQLException {
         this.queryExecutor = queryExecutor;
-        this.type = (Class<Entity>) ((ParameterizedType) getClass().getGenericSuperclass()).getActualTypeArguments()[0];
+        clazz = (Class<?>) ((ParameterizedType) getClass().getGenericSuperclass()).getActualTypeArguments()[0];
     }
 
     @Override
-    public List<Entity> findAll() {
+    public final List<Entity> findAll() {
         String query = String.format("SELECT * FROM %s", getTableName());
         ResultSet resultSet = queryExecutor.execute(query);
         return convertResultToEntity(resultSet);
@@ -36,8 +35,8 @@ public class JPRepositoryImpl<Entity, ID> implements JPRepository<Entity, ID> {
         List<Entity> entities = new ArrayList<>();
         try {
             while (resultSet.next()) {
-                Entity entity = type.getDeclaredConstructor().newInstance();
-                for (Field field : type.getDeclaredFields()) {
+                Entity entity = (Entity) clazz.getDeclaredConstructor().newInstance();
+                for (Field field : clazz.getDeclaredFields()) {
                     field.setAccessible(true);
                     field.set(entity, resultSet.getObject(field.getName()));
                 }
@@ -87,8 +86,8 @@ public class JPRepositoryImpl<Entity, ID> implements JPRepository<Entity, ID> {
 
 
     private String getTableName() {
-        if (!type.isAnnotationPresent(ma.codex.Framework.Persistence.Annotations.Entity.class))
+        if (!clazz.isAnnotationPresent(ma.codex.Framework.Persistence.Annotations.Entity.class))
             throw new IllegalArgumentException("this class is not annotated with @Entity");
-        return type.getAnnotation(ma.codex.Framework.Persistence.Annotations.Entity.class).name();
+        return clazz.getAnnotation(ma.codex.Framework.Persistence.Annotations.Entity.class).name();
     }
 }

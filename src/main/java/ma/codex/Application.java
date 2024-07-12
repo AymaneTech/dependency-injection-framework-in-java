@@ -11,8 +11,8 @@ import java.sql.SQLException;
 public class Application {
     public static void main(String[] args) throws SQLException {
         Kernel.run(Application.class);
-        JPRepository repository = new JPRepositoryImpl<Category, Long>(new QueryExecutor());
-        
+        JPRepository repository = new JPRepositoryImpl<Class<Category>, Long>(new QueryExecutor());
+
 
     }
 }
