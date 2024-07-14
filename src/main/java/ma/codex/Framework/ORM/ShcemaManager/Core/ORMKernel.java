@@ -32,7 +32,7 @@ public class ORMKernel {
     public void run() {
         try {
             scanByAnnotation.setAnnotation(Entity.class);
-            Collection<Class<?>> entityClasses = scanByAnnotation.find(packageName);
+            final Collection<Class<?>> entityClasses = scanByAnnotation.find(packageName);
             schemaGenerator.setSchemas(entityClasses);
             constraintManagement.setConstraints(entityClasses);
 

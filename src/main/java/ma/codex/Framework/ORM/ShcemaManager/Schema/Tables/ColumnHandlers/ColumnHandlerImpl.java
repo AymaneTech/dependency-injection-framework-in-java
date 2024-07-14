@@ -6,17 +6,17 @@ import java.lang.reflect.Field;
 
 public final class ColumnHandlerImpl implements ColumnHandler {
     @Override
-    public String handle(Field field) {
+    public String handle(final Field field) {
         if (field.isAnnotationPresent(Column.class)) {
-            Column column = field.getAnnotation(Column.class);
-            String type = determineColumnType(field, column);
-            String isNull = column.nullable() ? "" : "NOT NULL";
+            final Column column = field.getAnnotation(Column.class);
+            final String type = determineColumnType(field, column);
+            final String isNull = column.nullable() ? "" : "NOT NULL";
             return String.format("  %s %s %s", column.name(), type, isNull);
         }
         return "";
     }
 
-    private String determineColumnType(Field field, Column column) {
+    private String determineColumnType(final Field field, final Column column) {
         try {
             if (!column.type().isBlank()) {
                 return column.type();

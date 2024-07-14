@@ -15,10 +15,10 @@ public class QueryExecutor {
     /*
     * This method used to execute a list of queries for create, alter, drop, etc.
     * */
-    public void execute(List<String> schemas) throws SQLException {
-        for (String schema : schemas) {
+    public void execute(final List<String> schemas) throws SQLException {
+        for (final String schema : schemas) {
             if (!schema.isEmpty()) {
-                try (PreparedStatement stmt = connection.prepareStatement(schema)) {
+                try (final PreparedStatement stmt = connection.prepareStatement(schema)) {
                     stmt.executeUpdate();
                 } catch (PSQLException e) {
                     if (e.getMessage().contains("already exists")) {
@@ -35,8 +35,8 @@ public class QueryExecutor {
     /*
     * I'll use this for select queries
     * */
-    public ResultSet execute(String query) {
-        try (Statement stmt = connection.createStatement()) {
+    public ResultSet execute(final String query) {
+        try (final Statement stmt = connection.createStatement()) {
             return stmt.executeQuery(query);
         } catch (SQLException e) {
             System.err.println("error in statement execution");

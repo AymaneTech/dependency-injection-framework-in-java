@@ -4,7 +4,7 @@ import ma.codex.Framework.Persistence.Annotations.Relations.JoiningTable;
 
 public final class ManyToManyForeignKeyHandlerImpl implements ForeignKeyHandler<JoiningTable> {
     @Override
-    public String handle(JoiningTable definition) {
+    public String handle(final JoiningTable definition) {
         return String.format("""
                 CREATE OR REPLACE FUNCTION update_updated_at_column()
                 RETURNS TRIGGER AS $$

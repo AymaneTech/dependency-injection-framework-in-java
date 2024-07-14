@@ -15,7 +15,7 @@ public class env {
     static {
         synchronized (env.class) {
             if (envVariables.isEmpty()) {
-                String filePath = ".env";
+                final String filePath = ".env";
 
                 try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
                     String line;
@@ -26,8 +26,8 @@ public class env {
 
                         String[] parts = line.split("=", 2);
                         if (parts.length == 2) {
-                            String key = parts[0].trim();
-                            String value = parts[1].trim();
+                            final String key = parts[0].trim();
+                            final String value = parts[1].trim();
                             envVariables.put(key, value);
                         }
                     }

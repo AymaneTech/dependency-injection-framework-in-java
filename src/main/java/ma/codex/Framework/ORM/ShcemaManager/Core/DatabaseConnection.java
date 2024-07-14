@@ -37,9 +37,9 @@ public class DatabaseConnection {
     }
 
     private void init() throws SQLException {
-        String url = env.get("DB_URL");
-        String username = env.get("DB_USERNAME");
-        String password = env.get("DB_PASSWORD");
+        final String url = env.get("DB_URL");
+        final String username = env.get("DB_USERNAME");
+        final String password = env.get("DB_PASSWORD");
         try {
             connection = DriverManager.getConnection(url, username, password);
         } catch (SQLException e) {

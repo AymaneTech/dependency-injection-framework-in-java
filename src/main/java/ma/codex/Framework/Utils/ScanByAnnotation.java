@@ -22,10 +22,10 @@ public class ScanByAnnotation {
         this.annotation = annotation;
     }
 
-    public Collection<Class<?>> find(String packageName) {
-        ClassHunter classHunter = ComponentContainer.getInstance().getClassHunter();
+    public Collection<Class<?>> find(final String packageName) {
+        final ClassHunter classHunter = ComponentContainer.getInstance().getClassHunter();
 
-        try (ClassHunter.SearchResult result = classHunter.findBy(
+        try (final ClassHunter.SearchResult result = classHunter.findBy(
                 SearchConfig.forResources(packageName)
                         .by(ClassCriteria.create()
                                 .allThoseThatMatch((cls) -> !cls.isAnnotation() && cls.isAnnotationPresent(annotation)))

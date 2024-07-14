@@ -5,6 +5,7 @@ import ma.codex.Framework.ORM.ShcemaManager.Core.ORMKernel;
 import ma.codex.Framework.Utils.ScanByAnnotation;
 
 public class Kernel {
+
     public static void run(Class<?> mainClass) {
         Injector DIContext = new Injector(new ScanByAnnotation(), mainClass);
         DIContext.run();

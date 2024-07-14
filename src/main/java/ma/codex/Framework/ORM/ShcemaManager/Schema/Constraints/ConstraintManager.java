@@ -31,7 +31,7 @@ public class ConstraintManager {
     }
 
     private String addConstraint(final Field field) {
-        String query;
+        final String query;
         if (field.isAnnotationPresent(Definition.class)) {
             query = ForeignKeyHandlerFactory.get(field)
                     .handle(field.getAnnotation(Definition.class));
