@@ -1,8 +1,8 @@
 package ma.codex.Framework.ORM.ShcemaManager.Schema.Constraints;
 
 import ma.codex.Framework.ORM.ShcemaManager.Schema.Constraints.Factory.ForeignKeyHandlerFactory;
-import ma.codex.Framework.Persistence.Annotations.Relations.Definition;
-import ma.codex.Framework.Persistence.Annotations.Relations.JoiningTable;
+import ma.codex.Framework.ORM.Persistence.Annotations.Relations.Definition;
+import ma.codex.Framework.ORM.Persistence.Annotations.Relations.JoiningTable;
 
 import java.lang.reflect.Field;
 import java.util.Collection;

@@ -4,9 +4,9 @@ import ma.codex.Framework.ORM.ShcemaManager.Schema.Constraints.ForeignKeyHandler
 import ma.codex.Framework.ORM.ShcemaManager.Schema.Constraints.ForeignKeyHandlers.ManyToManyForeignKeyHandlerImpl;
 import ma.codex.Framework.ORM.ShcemaManager.Schema.Constraints.ForeignKeyHandlers.ManyToOneForeignKeyHandlerImpl;
 import ma.codex.Framework.ORM.ShcemaManager.Schema.Constraints.ForeignKeyHandlers.OneToOneForeignKeyHandlerImpl;
-import ma.codex.Framework.Persistence.Annotations.Relations.JoiningTable;
-import ma.codex.Framework.Persistence.Annotations.Relations.ManyToOne;
-import ma.codex.Framework.Persistence.Annotations.Relations.OneToOne;
+import ma.codex.Framework.ORM.Persistence.Annotations.Relations.JoiningTable;
+import ma.codex.Framework.ORM.Persistence.Annotations.Relations.ManyToOne;
+import ma.codex.Framework.ORM.Persistence.Annotations.Relations.OneToOne;
 
 import java.lang.reflect.Field;
 

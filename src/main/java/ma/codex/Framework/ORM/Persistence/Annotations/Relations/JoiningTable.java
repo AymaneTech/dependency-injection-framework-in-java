@@ -1,4 +1,4 @@
-package ma.codex.Framework.Persistence.Annotations.Relations;
+package ma.codex.Framework.ORM.Persistence.Annotations.Relations;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

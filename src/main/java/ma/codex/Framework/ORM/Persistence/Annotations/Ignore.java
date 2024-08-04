@@ -1,4 +1,4 @@
-package ma.codex.Framework.Persistence.Annotations;
+package ma.codex.Framework.ORM.Persistence.Annotations;
 
 public @interface Ignore {
 }

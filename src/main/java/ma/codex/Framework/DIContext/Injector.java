@@ -1,16 +1,16 @@
 package ma.codex.Framework.DIContext;
 
-import ma.codex.Framework.DIContext.Annotations.Autowired;
-import ma.codex.Framework.DIContext.Annotations.Component;
-import ma.codex.Framework.DIContext.Annotations.Qualified;
-import ma.codex.Framework.Utils.ScanByAnnotation;
-
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Parameter;
 import java.util.Collection;
 import java.util.HashMap;
+
+import ma.codex.Framework.DIContext.Annotations.Autowired;
+import ma.codex.Framework.DIContext.Annotations.Component;
+import ma.codex.Framework.DIContext.Annotations.Qualified;
+import ma.codex.Framework.Utils.ScanByAnnotation;
 
 /**
  * Injector class for Dependency Injection framework.
@@ -146,7 +146,7 @@ public class Injector {
             components.put(declaringClass.getName(), instance);
             injectFields(instance);
         } catch (InstantiationException | IllegalAccessException | InvocationTargetException
-                 | NoSuchMethodException e) {
+                | NoSuchMethodException e) {
             throw new RuntimeException("Error creating instance for " + declaringClass.getName(), e);
         }
     }

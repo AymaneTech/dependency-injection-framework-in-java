@@ -1,7 +1,7 @@
 package ma.codex.Framework.ORM.ShcemaManager.Schema.Constraints.ForeignKeyHandlers;
 
-import ma.codex.Framework.Persistence.Annotations.Relations.Definition;
-import ma.codex.Framework.Persistence.Enums.CascadeType;
+import ma.codex.Framework.ORM.Persistence.Annotations.Relations.Definition;
+import ma.codex.Framework.ORM.Persistence.Enums.CascadeType;
 
 public final class ManyToOneForeignKeyHandlerImpl implements ForeignKeyHandler <Definition>{
     @Override
@@ -14,5 +14,4 @@ public final class ManyToOneForeignKeyHandlerImpl implements ForeignKeyHandler <
         }
         return query;
     }
-
 }

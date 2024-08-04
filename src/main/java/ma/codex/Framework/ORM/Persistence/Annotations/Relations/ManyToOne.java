@@ -1,4 +1,4 @@
-package ma.codex.Framework.Persistence.Annotations.Relations;
+package ma.codex.Framework.ORM.Persistence.Annotations.Relations;
 
 import ma.codex.Framework.Persistence.Enums.CascadeType;
 
