@@ -1,39 +1,131 @@
 # Codex DI Framework
-## Brief Description
-A lightweight Java framework designed to provide a simple and efficient way to build Java applications.
 
-## Key Features
-- Lightweight and fast
-- Easy to integrate with other libraries
-## Modules Overview
-### Dependency Injection Module
-Brief description of the Dependency Injection Module.
+A lightweight Dependency Injection and ORM framework for Java applications.
 
-### ORM Module
-Brief description of the ORM Module.
+## Installation
 
-## Getting Started
-### Prerequisites
-- Java Development Kit (JDK) 8 or higher
-- Maven or Gradle
-- A modern IDE like IntelliJ IDEA or Eclipse
-- A relational database like MySQL or PostgreSQL
-### Installation
-1. Clone the repository from GitHub
-2. Run the Maven or Gradle build command
-3. Configure the application properties file
-## Basic Usage Examples
-### Setting up a Simple Project
-Instructions for setting up a simple project.
+1. Clone the repository:
+   ```
+   git clone git@github.com:AymaneTech/Codex-DI-framework.git
+   ```
 
-### Configuring Dependency Injection
-Instructions for configuring dependency injection.
+2. Navigate to the project directory:
+   ```
+   cd Codex-DI-framework
+   ```
 
-### Using the ORM Module
-Instructions for using the ORM module to interact with a database.
+3. Install the framework to your local Maven repository:
+   ```
+   mvn clean install
+   ```
 
-### Handling Exceptions
-Instructions for handling exceptions in the application.
+4. Add the following dependency to your project's pom.xml:
+   ```xml
+   <dependency>
+       <groupId>ma.codex</groupId>
+       <artifactId>codex-DI-framework</artifactId>
+       <version>1.0-SNAPSHOT</version>
+   </dependency>
+   ```
+
+## Usage
+
+### Main Application
+
+Create a main class and use the `Kernel.run()` method to start your application:
+
+```java
+import ma.codex.Framework.Kernel;
+
+public class Application {
+    public static void main(String[] args) throws SQLException {
+        Kernel.run(Application.class);        
+    }
+}
+```
+
+### Dependency Injection
+
+Use annotations to define and inject dependencies:
+
+```java
+import ma.codex.Framework.DIContext.Annotations.Autowired;
+import ma.codex.Framework.DIContext.Annotations.Component;
+import ma.codex.Framework.DIContext.Annotations.Qualified;
+
+@Component
+public class Client {
+    private Service service;
+
+    @Autowired
+    public Client(@Qualified(ServiceImpl.class) Service service) {
+        this.service = service;
+    }
+}
+
+@Component
+public class ServiceImpl implements Service {
+    // Implementation
+}
+
+public interface Service {
+    // Service interface
+}
+```
+
+### Entity Creation
+
+Define entities using annotations:
+
+```java
+import ma.codex.Framework.Persistence.Annotations.*;
+import ma.codex.Framework.Persistence.Annotations.Relations.*;
+import ma.codex.Framework.Persistence.Enums.CascadeType;
+
+@Entity(name = "products")
+public class Product {
+    @ID
+    @Column(name = "id")
+    private Long id;
+
+    @Column(name = "name", size = 40)
+    private String name;
+
+    @Column(name = "description", type = "text")
+    private String description;
+
+    @ManyToOne(mappedBy = "categories")
+    @Definition(tableName = "products", columnName = "category_id", 
+                referencedTable = "categories", referencedColumn = "id", 
+                cascade = CascadeType.ALL)
+    @Column(name = "category_id")
+    private Long categoryId;
+
+    @ManyToMany
+    private List<Cart> carts;
+}
+
+@Entity(name = "categories")
+public class Category {
+    @ID
+    private Long id;
+
+    @Column(name = "name", size = 40)
+    private String name;
+
+    @Column(name = "description", type = "text")
+    private String description;
+
+    @OneToMany(mappedBy = "products")
+    private List<Product> products;
+}
+```
+
+## Features
+
+- Dependency Injection with `@Autowired`, `@Component`, and `@Qualified` annotations
+- ORM capabilities with `@Entity`, `@Column`, `@ID`, and relationship annotations
+- Automatic schema generation based on entity definitions
 
 ## Contributing
 - Fork the repository and create a new branch
