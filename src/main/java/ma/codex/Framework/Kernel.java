@@ -1,5 +1,7 @@
 package ma.codex.Framework;
 
+import java.util.function.Predicate;
+
 import ma.codex.Framework.DIContext.Injector;
 import ma.codex.Framework.ORM.ShcemaManager.Core.ORMKernel;
 import ma.codex.Framework.Utils.ScanByAnnotation;

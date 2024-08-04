@@ -1,8 +1,8 @@
 package ma.codex.Framework.ORM.ShcemaManager.Schema.Tables.ColumnHandlers;
 
-import ma.codex.Framework.Persistence.Annotations.Column;
-
 import java.lang.reflect.Field;
+
+import ma.codex.Framework.ORM.Persistence.Annotations.Column;
 
 public final class ColumnHandlerImpl implements ColumnHandler {
     @Override

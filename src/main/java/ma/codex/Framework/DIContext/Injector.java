@@ -4,6 +4,7 @@ import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Parameter;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashMap;
 
@@ -21,6 +22,7 @@ import ma.codex.Framework.Utils.ScanByAnnotation;
 public class Injector {
 
     private final ScanByAnnotation scanner;
+
     /**
      * Map to store all instantiated components.
      * Key: Fully qualified class name
@@ -93,16 +95,14 @@ public class Injector {
      * @param constructor    The constructor to use for instantiation
      */
     private void injectConstructor(Class<?> declaringClass, Constructor<?> constructor) {
-        Parameter[] params = constructor.getParameters();
-        Object[] paramInstances = new Object[params.length];
-
-        for (int i = 0; i < params.length; i++) {
-            if (isInterface(params[i]))
-                paramInstances[i] = getInterfaceImplementation(params[i]);
-            else
-                paramInstances[i] = getOrCreateInstance(params[i].getType());
-
-        }
+        Object[] paramInstances = Arrays.stream(constructor.getParameters())
+                .filter(this::isInterface)
+                .map(param -> {
+                    return isInterface(param)
+                            ? getInterfaceImplementation(param)
+                            : getOrCreateInstance(param.getType());
+                })
+                .toArray();
 
         try {
             Object instance = constructor.newInstance(paramInstances);
@@ -181,25 +181,32 @@ public class Injector {
      * @param instance The object to inject fields into
      */
     private void injectFields(Object instance) {
-        Field[] fields = instance.getClass().getDeclaredFields();
-        for (Field field : fields) {
-            if (field.isAnnotationPresent(Autowired.class)) {
-                field.setAccessible(true);
-                try {
-                    if (field.isAnnotationPresent(Qualified.class))
-                        field.set(instance, getInterfaceImplementation(field));
-                    else
-                        field.set(instance, getOrCreateInstance(field.getType()));
+        Arrays.stream(instance.getClass().getDeclaredFields())
+                .filter(field -> field.isAnnotationPresent(Autowired.class))
+                .forEach(field -> injectField(instance, field));
 
-                } catch (IllegalAccessException e) {
-                    throw new RuntimeException("Error injecting field " + field.getName(), e);
-                }
-            }
+    }
+
+    private void injectField(Object instance, Field field) {
+        field.setAccessible(true);
+
+        try {
+            var value = isInterface(field)
+                    ? getInterfaceImplementation(field)
+                    : getOrCreateInstance(field.getType());
+            field.set(instance, value);
+        } catch (IllegalAccessException e) {
+            throw new RuntimeException("Error injecting field " + field.getName(), e);
         }
+
     }
 
     private boolean isInterface(Parameter param) {
         return param.getType().isInterface() && param.isAnnotationPresent(Qualified.class);
+    }
+
+    private boolean isInterface(Field field) {
+        return field.getType().isInterface() && field.isAnnotationPresent(Qualified.class);
     }
 
     private String setPackageName(Class<?> mainClass) {
