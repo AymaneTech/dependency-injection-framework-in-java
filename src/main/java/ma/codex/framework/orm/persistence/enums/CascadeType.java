@@ -1,4 +1,4 @@
-package ma.codex.framework.ORM.Persistence.Enums;
+package ma.codex.framework.orm.persistence.enums;
 
 public enum CascadeType {
     ALL,

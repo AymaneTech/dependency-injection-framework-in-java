@@ -1,7 +1,7 @@
-package ma.codex.framework.ORM.ShcemaManager.Schema.Constraints.ForeignKeyHandlers;
+package ma.codex.framework.orm.entityManager.schema.constraints.foreignKeyHandlers;
 
 
-import ma.codex.framework.ORM.Persistence.Annotations.Relations.Definition;
+import ma.codex.framework.orm.persistence.annotations.Relations.Definition;
 
 public final class OneToOneForeignKeyHandlerImpl implements ForeignKeyHandler <Definition> {
     @Override

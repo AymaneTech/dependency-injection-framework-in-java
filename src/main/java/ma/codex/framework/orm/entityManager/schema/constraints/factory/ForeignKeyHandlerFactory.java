@@ -1,12 +1,12 @@
-package ma.codex.framework.ORM.ShcemaManager.Schema.Constraints.Factory;
+package ma.codex.framework.orm.entityManager.schema.constraints.factory;
 
-import ma.codex.framework.ORM.ShcemaManager.Schema.Constraints.ForeignKeyHandlers.ForeignKeyHandler;
-import ma.codex.framework.ORM.ShcemaManager.Schema.Constraints.ForeignKeyHandlers.ManyToManyForeignKeyHandlerImpl;
-import ma.codex.framework.ORM.ShcemaManager.Schema.Constraints.ForeignKeyHandlers.ManyToOneForeignKeyHandlerImpl;
-import ma.codex.framework.ORM.ShcemaManager.Schema.Constraints.ForeignKeyHandlers.OneToOneForeignKeyHandlerImpl;
-import ma.codex.framework.ORM.Persistence.Annotations.Relations.JoiningTable;
-import ma.codex.framework.ORM.Persistence.Annotations.Relations.ManyToOne;
-import ma.codex.framework.ORM.Persistence.Annotations.Relations.OneToOne;
+import ma.codex.framework.orm.entityManager.schema.constraints.foreignKeyHandlers.ForeignKeyHandler;
+import ma.codex.framework.orm.entityManager.schema.constraints.foreignKeyHandlers.ManyToManyForeignKeyHandlerImpl;
+import ma.codex.framework.orm.entityManager.schema.constraints.foreignKeyHandlers.ManyToOneForeignKeyHandlerImpl;
+import ma.codex.framework.orm.entityManager.schema.constraints.foreignKeyHandlers.OneToOneForeignKeyHandlerImpl;
+import ma.codex.framework.orm.persistence.annotations.Relations.JoiningTable;
+import ma.codex.framework.orm.persistence.annotations.Relations.ManyToOne;
+import ma.codex.framework.orm.persistence.annotations.Relations.OneToOne;
 
 import java.lang.reflect.Field;
 

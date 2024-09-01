@@ -1,11 +1,11 @@
-package ma.codex.framework.ORM.ShcemaManager.Core;
+package ma.codex.framework.orm.entityManager.core;
 
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-import ma.codex.framework.Utils.env;
+import ma.codex.framework.utils.env;
 
 public class DatabaseConnection {
 

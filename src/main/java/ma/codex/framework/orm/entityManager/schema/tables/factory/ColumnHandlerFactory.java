@@ -1,4 +1,4 @@
-package ma.codex.framework.orm.entityManager.schema.tables.Factory;
+package ma.codex.framework.orm.entityManager.schema.tables.factory;
 
 import java.lang.reflect.Field;
 

@@ -10,7 +10,7 @@ import ma.codex.framework.utils.ScanByAnnotation;
 import java.util.Collection;
 
 @Component
-public class ORMKernel {
+public class OrmKernel {
     private final ScanByAnnotation scanByAnnotation;
     private final SchemaGenerator schemaGenerator;
     private final ConstraintManager constraintManagement;
@@ -18,7 +18,7 @@ public class ORMKernel {
     private String packageName;
 
     @Autowired
-    public ORMKernel(ScanByAnnotation scanByAnnotation, SchemaGenerator generator, ConstraintManager constraintManagement, QueryExecutor queryExecutor) {
+    public OrmKernel(ScanByAnnotation scanByAnnotation, SchemaGenerator generator, ConstraintManager constraintManagement, QueryExecutor queryExecutor) {
         this.scanByAnnotation = scanByAnnotation;
         this.schemaGenerator = generator;
         this.constraintManagement = constraintManagement;

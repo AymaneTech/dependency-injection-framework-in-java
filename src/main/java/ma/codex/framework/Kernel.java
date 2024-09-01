@@ -1,19 +1,20 @@
-package ma.codex.Framework;
+package ma.codex.framework;
 
-import java.util.function.Predicate;
+import java.sql.SQLException;
 
-import ma.codex.Framework.DIContext.Injector;
-import ma.codex.Framework.ORM.ShcemaManager.Core.ORMKernel;
-import ma.codex.Framework.Utils.ScanByAnnotation;
+import ma.codex.framework.iocContainer.Injector;
+import ma.codex.framework.orm.entityManager.core.OrmKernel;
+import ma.codex.framework.utils.ScanByAnnotation;
 
 public class Kernel {
 
-    public static void run(Class<?> mainClass) {
+    public static void run(Class<?> mainClass) throws SQLException {
         Injector DIContext = new Injector(new ScanByAnnotation(), mainClass);
         DIContext.run();
 
-        ORMKernel kernel = DIContext.getComponent(ORMKernel.class);
-        kernel.setPackageName(mainClass);
-        kernel.run();
+        // OrmKernel ormKernel = DIContext.getComponent(OrmKernel.class);
+        OrmKernel ormKernel = new OrmKernel(new ScanByAnnotation(), new SchemaGenerator(), new ConstraintManager(), new QueryExecutor());
+        ormKernel.setPackageName(mainClass);
+        ormKernel.run();
     }
 }

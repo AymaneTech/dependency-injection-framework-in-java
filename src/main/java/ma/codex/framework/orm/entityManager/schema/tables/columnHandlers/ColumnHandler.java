@@ -1,4 +1,4 @@
-package ma.codex.framework.ORM.ShcemaManager.Schema.Tables.ColumnHandlers;
+package ma.codex.framework.orm.entityManager.schema.tables.columnHandlers;
 
 import java.lang.reflect.Field;
 

@@ -1,9 +1,13 @@
-package ma.codex.framework.ORM.ShcemaManager.Core;
+package ma.codex.framework.orm.entityManager.core;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.List;
 
 import org.postgresql.util.PSQLException;
-
-import java.sql.*;
-import java.util.List;
 
 public class QueryExecutor {
     private final Connection connection;

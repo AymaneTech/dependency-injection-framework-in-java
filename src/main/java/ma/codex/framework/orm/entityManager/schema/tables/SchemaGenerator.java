@@ -1,4 +1,4 @@
-package ma.codex.framework.ORM.ShcemaManager.Schema.Tables;
+package ma.codex.framework.orm.entityManager.schema.tables;
 
 import java.lang.reflect.Field;
 import java.util.Collection;
@@ -6,8 +6,8 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-import ma.codex.framework.ORM.Persistence.Annotations.Entity;
-import ma.codex.framework.ORM.ShcemaManager.Schema.Tables.Factory.ColumnHandlerFactory;
+import ma.codex.framework.orm.persistence.annotations.Entity;
+import ma.codex.framework.orm.entityManager.schema.tables.factory.ColumnHandlerFactory;
 
 public class SchemaGenerator {
 

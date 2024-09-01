@@ -1,6 +1,6 @@
-package ma.codex.framework.ORM.ShcemaManager.Schema.Constraints.ForeignKeyHandlers;
+package ma.codex.framework.orm.entityManager.schema.constraints.foreignKeyHandlers;
 
-import ma.codex.framework.ORM.Persistence.Annotations.Relations.JoiningTable;
+import ma.codex.framework.orm.persistence.annotations.Relations.JoiningTable;
 
 public final class ManyToManyForeignKeyHandlerImpl implements ForeignKeyHandler<JoiningTable> {
     @Override

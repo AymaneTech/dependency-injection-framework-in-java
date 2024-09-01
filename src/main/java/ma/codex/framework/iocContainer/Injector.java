@@ -1,4 +1,4 @@
-package ma.codex.framework.DIContext;
+package ma.codex.framework.iocContainer;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
@@ -8,10 +8,10 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashMap;
 
-import ma.codex.framework.DIContext.Annotations.Autowired;
-import ma.codex.framework.DIContext.Annotations.Component;
-import ma.codex.framework.DIContext.Annotations.Qualified;
-import ma.codex.framework.Utils.ScanByAnnotation;
+import ma.codex.framework.iocContainer.annotations.Autowired;
+import ma.codex.framework.iocContainer.annotations.Component;
+import ma.codex.framework.iocContainer.annotations.Qualified;
+import ma.codex.framework.utils.ScanByAnnotation;
 
 /**
  * Injector class for Dependency Injection framework.
