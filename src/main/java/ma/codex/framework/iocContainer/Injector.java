@@ -53,8 +53,7 @@ public class Injector {
      */
     public void run() {
         try {
-            Collection<Class<?>> result = scanner.find(packageName);
-            result.forEach(this::instantiate);
+            scanner.find(packageName).forEach(this::instantiate);
         } catch (RuntimeException e) {
             System.err.println("Error during class scanning and component creation.");
             e.printStackTrace();
@@ -182,7 +181,7 @@ public class Injector {
      */
     private void injectFields(Object instance) {
         Arrays
-            .stream(instance.getClass().getDeclaredFields())
+                .stream(instance.getClass().getDeclaredFields())
                 .filter(field -> field.isAnnotationPresent(Autowired.class))
                 .forEach(field -> injectField(instance, field));
 
