@@ -4,6 +4,9 @@ import java.sql.SQLException;
 
 import ma.codex.framework.iocContainer.Injector;
 import ma.codex.framework.orm.entityManager.core.OrmKernel;
+import ma.codex.framework.orm.entityManager.core.QueryExecutor;
+import ma.codex.framework.orm.entityManager.schema.constraints.ConstraintManager;
+import ma.codex.framework.orm.entityManager.schema.tables.SchemaGenerator;
 import ma.codex.framework.utils.ScanByAnnotation;
 
 public class Kernel {
